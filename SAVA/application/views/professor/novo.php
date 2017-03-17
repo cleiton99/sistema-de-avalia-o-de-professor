@@ -1,0 +1,31 @@
+<?php
+$this->load->view('header');
+echo form_open("index.php/professor/novo");
+echo MSG::getAlertMensagemClose(MSG::ALERT_SUCCESS, $this->session->flashdata('success'));
+echo MSG::getAlertMensagemClose(MSG::ALERT_DANGER, validation_errors());
+echo "<h2 class='form-signin-heading'>NOVO PROFESSOR</h2>";
+echo "<div class='row'>";
+echo "<div class='col-md-6'>";
+echo "<div class='form-group'>";
+echo form_label('Nome', 'nome');
+echo form_input(array('type' => 'text', 'id' => 'nome', 'name' => 'nome', 'class' => 'form-control', 'placeholder' => 'DIGITE O NOME', 'autofocus' => true), set_value('nome'));
+echo "</div>";
+echo "</div>";
+echo "<div class='col-md-3'>";
+echo "<div class='form-group'>";
+echo form_label('Disciplina', 'disciplina');
+echo form_dropdown(array('id' => 'disciplina', 'name' => 'disciplina', 'class' => 'form-control'), $disciplinas, set_value('disciplina'));
+echo "</div>";
+echo "</div>";
+echo "<div class='col-md-3'>";
+echo "<div class='form-group'>";
+echo form_label('Série', 'serie');
+echo form_dropdown(array('id' => 'serie', 'name' => 'serie', 'class' => 'form-control'), $series, set_value('serie'));
+echo "</div>";
+echo "</div>";
+echo "</div>";
+echo form_button(array("class" => "btn btn-primary", "content" => "CADASTRAR", "type" => "submit"));
+echo anchor('index.php/professor/', 'Voltar', array('class' => 'btn btn-info'));
+echo form_close();
+$this->load->view('footer');
+?>
